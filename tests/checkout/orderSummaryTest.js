@@ -1,6 +1,6 @@
 import { renderOrderSummary } from "../../scripts/checkout/orderSummary.js";
 import { loadFromStorage, cart } from "../../data/cart.js";
-import { loadProducts } from "../../data/products.js";
+import { loadProductsFetch } from "../../data/products.js";
 describe('test suite: renderOrderSmmary', () => {
   
   const productId1 = 'e43638ce-6aa0-4b85-b27f-e1d07eb678c6';
@@ -8,8 +8,8 @@ describe('test suite: renderOrderSmmary', () => {
   // using Hooks to share a code
 
   beforeAll((done) => {
-    loadProducts(() => { // waite untile the backend file is finished
-      done(); // to waite untile loaded
+    loadProductsFetch().then(() => {
+      done();
     });
   });
 
